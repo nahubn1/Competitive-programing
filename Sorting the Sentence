@@ -1,0 +1,15 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        sent = s.split(' ')
+        sentence = {}
+        for i in sent:
+            sentence[i] = int(i[-1])
+        sentence = dict(sorted(sentence.items(), key=lambda item: item[1]))
+        result = ''
+        for word in list(sentence.keys()):
+            if list(sentence.keys()).index(word) == 0:
+                result += word.replace(word[-1], '')
+            else:
+                result += (' ' + word.replace(word[-1], ''))
+        return result
+    
