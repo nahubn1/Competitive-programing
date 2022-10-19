@@ -1,5 +1,4 @@
 class Solution:
-    #just used the iterator as r pointer
     def lengthOfLongestSubstring(self, s):
         summ = 0 
         l = 0 
