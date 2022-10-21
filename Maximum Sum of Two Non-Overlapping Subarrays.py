@@ -1,9 +1,7 @@
 class Solution:
     def maxSumTwoNoOverlap(self, nums: List[int], firstLen: int, secondLen: int) -> int:
         totalMaxSum = 0
-        back = firstLen 
-        front = secondLen
-        for i in range(2):
+        for back, front in ((firstLen, secondLen), (secondLen, firstLen)):
             
             maxSumBeforeJ = [sum(nums[: back])]
             for j in range(1, len(nums)-front-back+1):
@@ -18,7 +16,5 @@ class Solution:
                 maxSumAtJ.append(maxSumBeforeJ[j] + maxSumAfterJ[-(j+1)])
             
             totalMaxSum = max(totalMaxSum, max(maxSumAtJ))
-            back = secondLen
-            front = firstLen
             
         return totalMaxSum
