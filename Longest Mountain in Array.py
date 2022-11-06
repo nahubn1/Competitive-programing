@@ -1,8 +1,7 @@
 class Solution:
     def longestMountain(self, arr: List[int]) -> int:
         s, m , e = 0, 1, 2
-        maxLen = 0
-        mountLen = 0
+        maxLen, mountLen = 0, 0
         while m <= len(arr) - 2:
             # print(s, m, e)
             if arr[s] < arr[m] and arr[m] > arr[e]:
