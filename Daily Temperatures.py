@@ -1,13 +1,12 @@
-import math
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        output = [0]*len(temperatures)
-        stack = [(-1,math.inf)]
-        for i, temp in enumerate(temperatures):
-            while temp > stack[-1][1]:
-                output[stack[-1][0]] =  i - stack[-1][0]
-                stack.pop()
-            else:
-                stack.append((i, temp))
-        
-        return output
+        outPut = [0]*len(temperatures)
+        stack = [(0, temperatures[0])]
+        for day, temp in enumerate(temperatures):
+            if day:
+                while stack and temp > stack[-1][1]:
+                    last_day, last_temp = stack.pop()
+                    outPut[last_day] = day-last_day
+                else:
+                    stack.append((day, temp))
+        return outPut
