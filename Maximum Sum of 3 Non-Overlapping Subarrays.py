@@ -23,6 +23,5 @@ class Solution:
             Sum = sum([subSums[i], subSums[m], subSums[f]])
             if maxSum is None or Sum > maxSum[1]:
                 maxSum = ((i, m, f), Sum)
-                # print(m, Sum, maxSum)
         
         return maxSum[0]
